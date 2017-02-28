@@ -1,10 +1,8 @@
 import express from 'express'
-
+import area from './routes/area'
 let app = express()
 
-app.get('/', (req, res) => {
-	res.send('Hello es6')
-})
+app.use('/', area)
 
 app.listen(3000, () => {
 	console.log('Listening on 3000')

@@ -1,12 +1,13 @@
-import Square from './geometrics/Square'
-import Circle from './geometrics/Circle'
-import Triangle from './geometrics/Triangle'
+import express from 'express'
 
-let s = new Square(4)
-let c = new Circle(1)
-let t = new Triangle(2, 4)
+let app = express()
 
-console.log(s.area())
-console.log(c.area())
-console.log(t.area())
+app.get('/', (req, res) => {
+	res.send('Hello es6')
+})
 
+app.listen(3000, () => {
+	console.log('Listening on 3000')
+})
+
+export default app

@@ -379,12 +379,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 let app = __WEBPACK_IMPORTED_MODULE_0_express___default()()
+app.set('port', (process.env.PORT || 5000))
 
 app.use('/', __WEBPACK_IMPORTED_MODULE_1__routes_area__["a" /* default */])
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log(process.env.PORT || 3000)
-})
+var port = process.env.PORT || 5000;
+
+app.listen(port);
+console.log('server started '+ port);
 
 /* harmony default export */ __webpack_exports__["default"] = (app);
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))

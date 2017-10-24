@@ -1,49 +1,22 @@
-var express = require('express');
-var path = require('path');
-var serverStatic = require('serve-static');
-var app = express();
+import express from 'express'
+import path from 'path'
+import serverStatic from 'serve-static'
+import area from './routes/area'
+const app = express()
 
-app.use(serverStatic(__dirname));
+var port =  process.env.PORT || 5000
 
-var port = process.env.PORT || 5000;
-app.listen(port);
-console.log('server started '+ port);
+app.use('/area', area)
 app.get('/', function(req, res) {
     res.json({
         'msg': 'welcome'
     })
 })
 
-/// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
-/// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+app.listen(port, function () {
+	console.log("Running on port: ", port)
+})
 
 
-module.exports = app;
+export default app

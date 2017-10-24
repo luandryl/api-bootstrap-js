@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,70 +74,156 @@ module.exports = require("express");
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = require("path");
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__geometrics_Circle__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__geometrics_Square__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__geometrics_Triangle__ = __webpack_require__(6);
+
+
+
+
+
+let router = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router()
+
+router.get('/', (req, res) => {
+	let info = {
+		"Welcome": "Bem vindo a API de calculo de Areas",
+		"options": {
+			"/circle/{raio}": "calcula a area de um circulo com o raio passado por parametro",
+			"/square/{side}/": "calcula a area do quadrado",
+			"/tri/{base}/{height}": "area do triangulo"
+		}
+	}
+	res.send(info)
+})
+
+router.get('/circle/:raio', (req, res) => {
+	let c = new __WEBPACK_IMPORTED_MODULE_1__geometrics_Circle__["a" /* default */](req.params.raio)
+	res.send(c.area().toString())
+})
+
+router.get('/square/:side', (req, res) => {
+	let s = new __WEBPACK_IMPORTED_MODULE_2__geometrics_Square__["a" /* default */](req.params.side)
+	res.send(s.area().toString())
+})
+
+router.get('/tri/:base/:height', (req, res) => {
+	let t = new __WEBPACK_IMPORTED_MODULE_3__geometrics_Triangle__["a" /* default */](req.params.base, req.params.height)
+	res.send(t.area().toString())
+})
+
+/* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("serve-static");
+module.exports = require("path");
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-/* WEBPACK VAR INJECTION */(function(__dirname) {var express = __webpack_require__(0);
-var path = __webpack_require__(1);
-var serverStatic = __webpack_require__(2);
-var app = express();
+module.exports = require("serve-static");
 
-app.use(serverStatic(__dirname));
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var port = process.env.PORT || 5000;
-app.listen(port);
-console.log('server started '+ port);
+"use strict";
+
+class Circle {
+	constructor (raio) {
+		this.raio = raio
+	}
+	
+	area () {
+		return this.raio * 3.1415
+	}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Circle;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+class Square {
+	constructor (sideLength) {
+		if (sideLength < 0) {
+			throw new Error({'Size':'Side it should be > 0'})
+		} else {
+			this.sideLength = sideLength
+		}
+	}
+
+	area () {
+		return this.sideLength * this.sideLength
+	}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Square;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+class Triangle {
+	constructor (base, height) {
+		this.base = base
+		this.height = height
+	}
+
+	area () {
+		return .5 * (this.base * this.height)
+	}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Triangle;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_path__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_serve_static__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_serve_static___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_serve_static__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_area__ = __webpack_require__(1);
+
+
+
+
+const app = __WEBPACK_IMPORTED_MODULE_0_express___default()()
+
+var port =  process.env.PORT || 5000
+
+app.use('/area', __WEBPACK_IMPORTED_MODULE_3__routes_area__["a" /* default */])
 app.get('/', function(req, res) {
     res.json({
         'msg': 'welcome'
     })
 })
 
-/// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
-/// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+app.listen(port, function () {
+	console.log("Running on port: ", port)
+})
 
 
-module.exports = app;
-/* WEBPACK VAR INJECTION */}.call(exports, "/"))
+/* harmony default export */ __webpack_exports__["default"] = (app);
 
 /***/ })
 /******/ ]);

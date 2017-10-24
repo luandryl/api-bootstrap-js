@@ -3,7 +3,7 @@ JS Amazing Features
 
 Express.js with Speed of Light API Bootstrap ES6 <3
 
-[See the docs](https://luandryl.github.io/es6-babel-mocha-exemple/)
+[See the docs](https://luandryl.github.io/api-bootstrap-js/)
 ## Features
 * express.js
 * babel

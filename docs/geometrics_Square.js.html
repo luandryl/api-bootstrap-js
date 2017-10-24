@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home | Area API Docs</title>
+    <title>Source: geometrics/Square.js | Area API Docs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -42,40 +44,38 @@
 
 
     
-
-
-
-
-
-
-
-
-
-    
-
-
     <section>
-        <article class="readme"><h1>JS Amazing Features</h1><p>Express.js with Speed of Light API Bootstrap ES6 &lt;3</p>
-<h2>Features</h2><ul>
-<li>express.js</li>
-<li>babel</li>
-<li>webpack</li>
-<li>jsdocs</li>
-<li>mocha</li>
-<li>chai</li>
-</ul>
-<h3>Express</h3><p>Express is a light-weight web application framework to help organize your web application into an MVC architecture on the server side</p>
-<h3>Babel</h3><p>Babel is our JS transpiler that converts ES6 JS code into ES5. Its a tool for transpiling your code.</p>
-<h3>Webpack</h3><p>Webpack is a modular build tool that has two sets of functionality — Loaders and Plugins, with webpack we load our <code>babel transpiled code</code>, in future we also configure a plugin 
-minifies and uglifies the output of <code>babel transpiled code</code>
-Webpack its configured to serve a backend API in this repo so a the Node Environment was configured</p>
-<h3>JSDoc</h3><p>JSDoc is an API Docs generator for JS like Javadocs and phpDocumentos. Alow you to wirte your documentations comments directly to sorce code and JSDoc will scan your code and generate HTML Docs for you &lt;3 </p>
-<h3>Mocha</h3><p>Mocha is a Javascript test framework that run on Node.Js and in browser, allowing you to test front/back-end of your aplication. Our usage of mocha it's focused in backend, to accomplish this task its configured to run in Node.Js environment</p>
-<h3>Chai</h3><p>Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework. Chai was configured to work with Mocha</p>
-<h2>Other information</h2><p>This repository its my small testing things area. Im trying to aways maintain the master branch stable for me and others who want a fast bootrap of a javascript application based on Express.js</p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Class module for calculate the area of squares.
+ * @module Square
+ */
+'use strict'
+export default class Square {
+	/**
+	 * Create a square.
+	 * Has no negative area, if the value of
+	 * sideLength is negative it should throw a arror
+	 * @constructor
+	 * @param {number} sideLength - The side length of square.
+	 */
+	constructor (sideLength) {
+		if (sideLength &lt; 0) {
+			throw new Error({'Size':'Side it should be > 0'})
+		} else {
+			this.sideLength = sideLength
+		}
+	}
+	/**
+	 * Calculate the area.
+	 * @return {number} the area of cricle.
+	 */
+	area () {
+		return this.sideLength * this.sideLength
+	}
+}</code></pre>
+        </article>
     </section>
-
-
 
 
 
@@ -92,7 +92,7 @@ Webpack its configured to serve a backend API in this repo so a the Node Environ
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'package:undefined_sub'.replace(/"/g, '_');
+        var id = '_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 

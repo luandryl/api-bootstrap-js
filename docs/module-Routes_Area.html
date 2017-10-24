@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Class: module:Square | Area API Docs</title>
+    <title>Module: Routes/Area | Area API Docs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -46,7 +46,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>module:Square<span class="signature">(sideLength)</span><span class="type-signature"></span></h2>
+        <h2>Routes/Area</h2>
+        
+            
         
     
 </header>
@@ -56,33 +58,18 @@
         <div class="container-overview">
         
             
+                <div class="description">Express router providing Area related routes</div>
+            
+
+            
+                
 
 <dt>
-    
-        <h4 class="name" id="module:Square">
-            
-                new <span class="type-signature"></span>module:Square<span class="signature">(sideLength)</span><span class="type-signature"></span>
-                
-            
-            <div class="container-source members">
-                <code><a href="geometrics_Square.js.html">geometrics/Square.js</a></code>,
-                <code><a href="geometrics_Square.js.html#line14">line 14</a></code>
-            </div>
-            
-        </h4>
-
-        
     
 </dt>
 <dd>
 
     
-    <div class="description">
-        Create a square.
-Has no negative area, if the value of
-sideLength is negative it should throw a arror
-    </div>
-    
 
     
 
@@ -90,56 +77,6 @@ sideLength is negative it should throw a arror
 
     
 
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>sideLength</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The side length of square.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
     
 
     
@@ -195,6 +132,7 @@ sideLength is negative it should throw a arror
 
 </dd>
 
+            
         
         </div>
     
@@ -202,6 +140,65 @@ sideLength is negative it should throw a arror
     
 
     
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li>module:express</li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+
+<dt>
+<h4 class="name" id="~router">
+    <span class="type-signature"><span class="icon green">inner</span>, <span class="icon green">constant</span> </span>router<span class="type-signature"> :object</span>
+    
+    <div class="container-source members">
+        <code><a href="routes_area.js.html">routes/area.js</a></code>,
+        <code><a href="routes_area.js.html#line32">line 32</a></code>
+    </div>
+    
+</h4>
+
+
+</dt>
+<dd>
+    
+    <div class="description">
+        Express router to mount user related functions on.
+    </div>
+    
+
+    <!--
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    -->
+
+    
+
+
+<dl class="details">
 
     
 
@@ -211,6 +208,36 @@ sideLength is negative it should throw a arror
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     
@@ -221,14 +248,14 @@ sideLength is negative it should throw a arror
 
 <dt>
     
-        <h4 class="name" id="area">
+        <h4 class="name" id="~/circle/:raio">
             
-                <span class="type-signature"></span>area<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+                <span class="type-signature"><span class="icon green">inner</span> </span>/circle/:raio<span class="signature">(radius)</span><span class="type-signature"> &rarr; {callback}</span>
                 
             
             <div class="container-source members">
-                <code><a href="geometrics_Square.js.html">geometrics/Square.js</a></code>,
-                <code><a href="geometrics_Square.js.html#line25">line 25</a></code>
+                <code><a href="routes_area.js.html">routes/area.js</a></code>,
+                <code><a href="routes_area.js.html#line49">line 49</a></code>
             </div>
             
         </h4>
@@ -240,7 +267,167 @@ sideLength is negative it should throw a arror
 
     
     <div class="description">
-        Calculate the area.
+        Calculate the area of circle
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>radius</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Radius Value</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">callback</span>
+
+
+
+
+
+- Area result.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="~/index/">
+            
+                <span class="type-signature"><span class="icon green">inner</span> </span>/index/<span class="signature">()</span><span class="type-signature"></span>
+                
+            
+            <div class="container-source members">
+                <code><a href="routes_area.js.html">routes/area.js</a></code>,
+                <code><a href="routes_area.js.html#line33">line 33</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Welcome route.
     </div>
     
 
@@ -263,6 +450,145 @@ sideLength is negative it should throw a arror
     
 
     
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="~/square/:side">
+            
+                <span class="type-signature"><span class="icon green">inner</span> </span>/square/:side<span class="signature">(side)</span><span class="type-signature"> &rarr; {callback}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="routes_area.js.html">routes/area.js</a></code>,
+                <code><a href="routes_area.js.html#line60">line 60</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Calculate the area of square
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>side</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Side lenght value</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
     <div class="container-returns">
         <h5>Returns:</h5>
         
@@ -270,13 +596,196 @@ sideLength is negative it should throw a arror
 
 
 
-<span class="param-type">number</span>
+<span class="param-type">callback</span>
 
 
 
 
 
-- the area of cricle.
+- Area result.
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id="~/tri/:base/:height">
+            
+                <span class="type-signature"><span class="icon green">inner</span> </span>/tri/:base/:height<span class="signature">(base, height)</span><span class="type-signature"> &rarr; {callback}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="routes_area.js.html">routes/area.js</a></code>,
+                <code><a href="routes_area.js.html#line71">line 71</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Calculate the area of triangle
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>base</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Base lenght.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Height lenght.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">callback</span>
+
+
+
+
+
+- Area result.
 
 
 
@@ -351,7 +860,7 @@ sideLength is negative it should throw a arror
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'module:Square_sub'.replace(/"/g, '_');
+        var id = 'module:Routes/Area_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 

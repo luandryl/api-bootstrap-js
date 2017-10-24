@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node app.build.js",
+    "start": "node ./build/app.build.js",
     "build": "webpack",
     "test": "mocha --compilers js:babel-core/register",
     "dev": "nodemon index.js --exec babel-node"
@@ -18,10 +18,10 @@
     "babel-preset-stage-2": "^6.22.0",
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^2.2.1"
   },
   "dependencies": {
-    "express": "^4.14.1",
-    "webpack": "^2.2.1"
+    "express": "^4.14.1"
   }
 }

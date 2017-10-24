@@ -23,6 +23,7 @@ module.exports = {
 		filename: 'app.build.js'
 	},
 	externals: nodeModules,
+	target: 'node',
 	module: {
 		loaders: [{
 			test: '/\.js$/',

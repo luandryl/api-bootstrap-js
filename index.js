@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var serverStatic = require('serve-static');
-var area = require('routes/area');
 var app = express();
 
 app.use(serverStatic(__dirname));
@@ -9,8 +8,11 @@ app.use(serverStatic(__dirname));
 var port = process.env.PORT || 5000;
 app.listen(port);
 console.log('server started '+ port);
-
-app.use('/area', area)
+app.get('/', function(req, res) {
+    res.json({
+        'msg': 'welcome'
+    })
+})
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

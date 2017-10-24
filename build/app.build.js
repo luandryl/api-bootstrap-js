@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -258,6 +258,12 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -488,25 +494,125 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = require("express");
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__geometrics_Circle__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__geometrics_Square__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__geometrics_Triangle__ = __webpack_require__(7);
+
+
+
+
+
+let router = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router()
+
+router.get('/', (req, res) => {
+	let info = {
+		"Welcome": "Bem vindo a API de calculo de Areas",
+		"options": {
+			"/circle/{raio}": "calcula a area de um circulo com o raio passado por parametro",
+			"/square/{side}/": "calcula a area do quadrado",
+			"/tri/{base}/{height}": "area do triangulo"
+		}
+	}
+	res.send(info)
+})
+
+router.get('/circle/:raio', (req, res) => {
+	let c = new __WEBPACK_IMPORTED_MODULE_1__geometrics_Circle__["a" /* default */](req.params.raio)
+	res.send(c.area().toString())
+})
+
+router.get('/square/:side', (req, res) => {
+	let s = new __WEBPACK_IMPORTED_MODULE_2__geometrics_Square__["a" /* default */](req.params.side)
+	res.send(s.area().toString())
+})
+
+router.get('/tri/:base/:height', (req, res) => {
+	let t = new __WEBPACK_IMPORTED_MODULE_3__geometrics_Triangle__["a" /* default */](req.params.base, req.params.height)
+	res.send(t.area().toString())
+})
+
+/* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = require("serve-static");
 
 /***/ }),
-/* 4 */
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+class Circle {
+	constructor (raio) {
+		this.raio = raio
+	}
+	
+	area () {
+		return this.raio * 3.1415
+	}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Circle;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+class Square {
+	constructor (sideLength) {
+		if (sideLength < 0) {
+			throw new Error({'Size':'Side it should be > 0'})
+		} else {
+			this.sideLength = sideLength
+		}
+	}
+
+	area () {
+		return this.sideLength * this.sideLength
+	}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Square;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+class Triangle {
+	constructor (base, height) {
+		this.base = base
+		this.height = height
+	}
+
+	area () {
+		return .5 * (this.base * this.height)
+	}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Triangle;
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(__dirname, process) {var express = __webpack_require__(2);
-var path = __webpack_require__(1);
-var serverStatic = __webpack_require__(3);
-
+/* WEBPACK VAR INJECTION */(function(__dirname, process) {var express = __webpack_require__(1);
+var path = __webpack_require__(2);
+var serverStatic = __webpack_require__(4);
+var area = __webpack_require__(3)
 var app = express();
 
 app.use(serverStatic(__dirname));
@@ -515,7 +621,7 @@ var port = process.env.PORT || 5000;
 app.listen(port);
 console.log('server started '+ port);
 
-
+app.use('/area', area)
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
